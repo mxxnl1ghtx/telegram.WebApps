@@ -10,11 +10,11 @@ let item = "";
 let buttons = document.querySelectorAll(".btn");
 buttons.forEach(el => {
     el.addEventListener('click', event =>{
-        let btnNumber = el.getAttribute('data-btn-number');
+        let price = el.getAttribute('.price');
         if (tg.MainButton.isVisible) {
-            tg.MainButton.innerHTML + btnNumber;
+            tg.MainButton.hide();
         } else {
-            tg.MainButton.setText("Вы выбрали товар " + btnNumber);
+            tg.MainButton.setText("Вы выбрали товар " + price);
             item = "el";
             tg.MainButton.show();
         }

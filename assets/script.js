@@ -13,7 +13,7 @@ function toggleItem(btn, itemId, price) {
         let newItem = {id: itemId, price: price}
         items.push(newItem);
         btn.classList.add('added-to-cart');
-        btn.innerText = "Удалить из корзины";
+        btn.innerText = "Удалить";
         let totalPrice = items.reduce((total, item) => total + item.price, 0);
         if (totalPrice > 0) {
             tg.MainButton.setText(`Общая цена товаров: ${totalPrice}`);
@@ -27,7 +27,7 @@ function toggleItem(btn, itemId, price) {
         let index = items.indexOf(item);
         items.splice(index, 1);
         btn.classList.remove('added-to-cart');
-        btn.innerText = 'Добавить в корзину';
+        btn.innerText = 'Добавить';
         let totalPrice = items.reduce((total, item) => total + item.price, 0);
         if (totalPrice > 0) {
             tg.MainButton.setText(`Общая цена товаров: ${totalPrice}`);
@@ -46,7 +46,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         items: items,
         totalPrice: calculateTotalPrice()
     };
-    tg.sendData(JSSON.stringify(data));
+    tg.sendData(JSON.stringify(data));
 })
 
 function calculateTotalPrice() {
